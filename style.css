@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+
+
+
+* {
+    font-family: 'Raleway';
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 25px;
+}
+
+.para {
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+.form-form {
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+#input {
+    padding-left: 6px;
+}
+
+.book-book {
+    margin-bottom: 5px;
+}
+
+.book-input{
+    padding: 12px;
+}
+
+.emoji {
+    display: flex;
+}
+
+.emoji-icon {
+    margin-right: 5px;
+}
+
+.footer {
+    padding: 3px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0d6efd;
+    color: white;
+    text-align: center;
+ }
+
+
+/* 
+    <div class="grid-item">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="emoji">
+                  <p class="emoji-icon">📕</p><h5 class="card-title" id="new-title">A Song of Ice and Fire</h5>
+                </div>
+                <h6 class="card-subtitle mb-2 text-muted">George RR Martin</h6>
+                <p class="card-text"> Pages: 211</p>
+                <p class="card-status">Read</p>
+                <a href="#" class="btn btn-primary">Completed</a><a href="#" class="btn btn-secondary">Delete</a>
+                </div>
+              </div>
+        </div> 
+*/
