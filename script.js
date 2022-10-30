@@ -55,13 +55,11 @@ const handleClick = () => {
 // After Getting the New Book
 
 const createBookCards = (book) => {
-
-  
-
-
+    console.log(book)
 
    // Creating all new elements needed in the card
-    const bookCard = document.createElement('div')
+    const gridContainer = document.createElement('div')
+    const gridItem = document.createElement('div')
     const card = document.createElement('div')
     const cardBody = document.createElement('div')
     const cardTitle = document.createElement('div')
@@ -74,8 +72,8 @@ const createBookCards = (book) => {
     const btnDelete = document.createElement('button')
 
    // Adding classes
-
-    bookCard.classList.add('grid-item')
+    gridContainer.classList.add('grid-container')
+    gridItem.classList.add('grid-item')
     card.classList.add('card')
     cardBody.classList.add('card-body')
     cardTitle.classList.add('book-card-title')
@@ -99,12 +97,19 @@ const createBookCards = (book) => {
 
    // Append it to the Root
 
-    root.appendChild(bookCard)
-    bookCard.appendChild(card)
+    root.appendChild(gridContainer)
+    gridContainer.appendChild(gridItem)
+    gridItem.appendChild(card)
     card.appendChild(cardBody)
     cardBody.appendChild(cardTitle)
     cardTitle.appendChild(emoji)
-    emoji.appendChild(bookAuthor)
+    cardTitle.appendChild(bookTitle)
+    cardBody.appendChild(bookAuthor)
+    cardBody.appendChild(bookPages)
+    cardBody.appendChild(bookStatus)
+    cardBody.appendChild(btnStatus)
+    cardBody.appendChild(btnDelete)
+
     
 };
 
