@@ -48,7 +48,7 @@ body {
     padding: 12px;
 }
 
-.emoji {
+.book-card-title {
     display: flex;
 }
 
@@ -68,18 +68,8 @@ body {
  }
 
 
-/* 
-    <div class="grid-item">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="emoji">
-                  <p class="emoji-icon">📕</p><h5 class="card-title" id="new-title">A Song of Ice and Fire</h5>
-                </div>
-                <h6 class="card-subtitle mb-2 text-muted">George RR Martin</h6>
-                <p class="card-text"> Pages: 211</p>
-                <p class="card-status">Read</p>
-                <a href="#" class="btn btn-primary">Completed</a><a href="#" class="btn btn-secondary">Delete</a>
-                </div>
-              </div>
-        </div> 
-*/
+ .example-div {
+    border: 2px solid red;
+    height: 25px;
+    width: 25px;
+ }

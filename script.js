@@ -1,4 +1,3 @@
-
 const title = document.getElementById('book-title')
 const author = document.getElementById('book-author')
 const pages = document.getElementById('book-pages')
@@ -9,6 +8,8 @@ const root = document.getElementById('root')
 
 let myBookshelf = [];
 
+//Book constructor
+
 function Book(title, author, pages, status) {
     this.title = title
     this.author = author
@@ -16,10 +17,19 @@ function Book(title, author, pages, status) {
     this.status = status
 }
 
-
+//Adding book to shelf.
 function addBookToBookshelf() {
     const newBook = new Book(title.value, author.value, pages.value, status.value);
     myBookshelf.push(newBook)
+    createBookCards(newBook)
+}
+
+//Delete Form Values
+
+function deleteForm() {
+    title.value = '';
+    author.value = '';
+    pages.value = '';
 }
 
 // submit.addEventListener('click', (event) => {
@@ -34,30 +44,70 @@ const handleClick = () => {
         alert('Hey! We need the author.')
     } else {
         addBookToBookshelf();
+        deleteForm();
+
     } 
 }
-// After Getting the New 
-// let data = [
-//     {name: 'name0', description: 'description', date: 'XX/XX/XXXX'},
-//     {name: 'name1', description: 'description', date: 'XX/XX/XXXX'},
-//     {name: 'name2', description: 'description', date: 'XX/XX/XXXX'},
-// ]
 
-// myBookshelf.forEach(res => {
-//     let card = document.createElement("div");
 
-//     let name = document.createTextNode('Name:' + res.name + ', ');
-//     card.appendChild(name);
 
-//     let description = document.createTextNode('Description:' + res.description + ', ');
-//     card.appendChild(description);
 
-//     let date = document.createTextNode('date:' + res.date);
-//     card.appendChild(date);
+// After Getting the New Book
 
-//     let container = document.querySelector("#container");
-//     container.appendChild(card);
-// });
+const createBookCards = (book) => {
+
+  
+
+
+
+   // Creating all new elements needed in the card
+    const bookCard = document.createElement('div')
+    const card = document.createElement('div')
+    const cardBody = document.createElement('div')
+    const cardTitle = document.createElement('div')
+    const emoji = document.createElement('p')
+    const bookTitle = document.createElement('h5')
+    const bookAuthor = document.createElement('h6')
+    const bookPages = document.createElement('p')
+    const bookStatus = document.createElement('p')
+    const btnStatus = document.createElement('button')
+    const btnDelete = document.createElement('button')
+
+   // Adding classes
+
+    bookCard.classList.add('grid-item')
+    card.classList.add('card')
+    cardBody.classList.add('card-body')
+    cardTitle.classList.add('book-card-title')
+    emoji.classList.add('emoji-icon')
+    bookTitle.classList.add('card-title')
+    bookAuthor.classList.add('card=subtitle', 'mb-2', 'text-muted')
+    bookPages.classList.add('card-text')
+    bookStatus.classList.add('card-status')
+    btnStatus.classList.add('btn', 'btn-primary')
+    btnDelete.classList.add('btn', 'btn-secondary')
+
+   // Adding content
+  
+    emoji.textContent = '📕'
+    bookTitle.textContent = `${book.title}`
+    bookAuthor.textContent = `${book.author}`
+    bookPages.textContent = `${book.pages} pages`
+    bookStatus.textContent = `${book.status}`
+    btnStatus.textContent = 'Edit'
+    btnDelete.textContent = 'Delete'
+
+   // Append it to the Root
+
+    root.appendChild(bookCard)
+    bookCard.appendChild(card)
+    card.appendChild(cardBody)
+    cardBody.appendChild(cardTitle)
+    cardTitle.appendChild(emoji)
+    emoji.appendChild(bookAuthor)
+    
+};
+
 
 
 
