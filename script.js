@@ -4,6 +4,7 @@ const pages = document.getElementById('book-pages')
 const status = document.getElementById('book-status')
 const grid = document.getElementById('grid-container')
 const root = document.getElementById('root')
+const error = document.getElementById('error')
 
 
 let myBookshelf = [];
@@ -15,11 +16,15 @@ function Book(title, author, pages, status) {
     this.author = author
     this.pages = pages
     this.status = status
+
 }
+
+//Add ID to Each Book
 
 //Adding book to shelf.
 function addBookToBookshelf() {
     const newBook = new Book(title.value, author.value, pages.value, status.value);
+   
     myBookshelf.push(newBook)
     createBookCards(newBook)
 }
@@ -39,7 +44,12 @@ function deleteForm() {
 
 const handleClick = () => {
     if(title.value === '')  {
-        alert('Hey! We need the tittle.')
+        error.innerHTML = 'Hey! We need the tittle.'
+        error.classList.add('alert', 'alert-warning', 'alert-dismissible', 'fade', 'show')
+        const button = document.createElement('button')
+        button.classList.add('btn-close')
+        error.appendChild(button)
+
     } else if (author.value === '') {
         alert('Hey! We need the author.')
     } else {
@@ -58,7 +68,6 @@ const createBookCards = (book) => {
     console.log(book)
 
    // Creating all new elements needed in the card
-    const gridContainer = document.createElement('div')
     const gridItem = document.createElement('div')
     const card = document.createElement('div')
     const cardBody = document.createElement('div')
@@ -72,18 +81,17 @@ const createBookCards = (book) => {
     const btnDelete = document.createElement('button')
 
    // Adding classes
-    gridContainer.classList.add('grid-container')
     gridItem.classList.add('grid-item')
     card.classList.add('card')
     cardBody.classList.add('card-body')
     cardTitle.classList.add('book-card-title')
     emoji.classList.add('emoji-icon')
     bookTitle.classList.add('card-title')
-    bookAuthor.classList.add('card=subtitle', 'mb-2', 'text-muted')
+    bookAuthor.classList.add('card-subtitle', 'mb-2', 'text-muted')
     bookPages.classList.add('card-text')
     bookStatus.classList.add('card-status')
-    btnStatus.classList.add('btn', 'btn-primary')
-    btnDelete.classList.add('btn', 'btn-secondary')
+    btnStatus.classList.add('btn', 'btn-outline-success', 'button-normal')
+    btnDelete.classList.add('btn', 'btn-outline-danger', 'button-normal')
 
    // Adding content
   
@@ -96,9 +104,7 @@ const createBookCards = (book) => {
     btnDelete.textContent = 'Delete'
 
    // Append it to the Root
-
-    root.appendChild(gridContainer)
-    gridContainer.appendChild(gridItem)
+    grid.appendChild(gridItem)
     gridItem.appendChild(card)
     card.appendChild(cardBody)
     cardBody.appendChild(cardTitle)
@@ -112,10 +118,5 @@ const createBookCards = (book) => {
 
     
 };
-
-
-
-
-
 
 

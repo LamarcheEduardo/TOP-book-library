@@ -18,7 +18,7 @@
 
         <!-- Button triggering the modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add new book
+            Add a new book
         </button>
   
      <!-- Modal -->
@@ -42,7 +42,7 @@
                         </div>
                         <div class="book-input">
                             <label for="book-pages">Pages</label>
-                            <input class="form-control" type="number" id="book-pages" required>
+                            <input class="form-control" type="number" id="book-pages">
                         </div>
                         <div class="book-input">
                             <label for="book-status">Status: </label>
@@ -52,53 +52,29 @@
                                 <option value="Not Read">Not Read</option>
                               </select>
                         </div>
+
                         <!-- ALERT WHEN ERROR -->
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>
-                        <div class="modal-footer">
+
+                        <div id="error"></div>
+                       
+
                             <!-- SUBMIT BUTTON-->
+
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary" form="newBookInput" data-bs-dismiss="modal" onclick="handleClick();">Submit</button>
+                            <button type="submit" class="btn btn-primary" form="newBookInput" data-bs-dismiss="modal" id="liveAlertBtn" onclick="handleClick();">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
             </div>
+            <div id="root">
+                <div class="grid-container" id="grid-container"></div>
+            </div>
         </div>
-        <div id="root"></div>
-        <!-- <div class="grid-container" id="grid-container">
-           <div class="grid-item">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="book-card-title">
-                  <p class="emoji-icon">📕</p><h5 class="card-title" id="new-title">A Song of Ice and Fire</h5>
-                </div>
-                <h6 class="card-subtitle mb-2 text-muted">George RR Martin</h6>
-                <p class="card-text"> Pages: 211</p>
-                <p class="card-status">Read</p>
-                <a href="#" class="btn btn-primary">Completed</a><a href="#" class="btn btn-secondary">Delete</a>
-                </div>
-              </div>
-        </div> 
-        <div class="grid-item">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="emoji">
-                  <p class="emoji-icon">📕</p><h5 class="card-title" id="new-title">House of The Dragon</h5>
-                </div>
-                  <h6 class="card-subtitle mb-2 text-muted">George RR Martin</h6>
-                  <p class="card-text"> Pages: 517</p>
-                  <p class="card-status">Read</p>
-                  <a href="#" class="btn btn-primary">Completed</a><a href="#" class="btn btn-secondary">Delete</a>
-                </div>
-              </div>
-        </div>  -->
-
+        
     </div>
     <div class="footer">
-        <p>made with love by @lamarcheeduardo <i class="bi bi-github"></i></p>
+        <p class="footer-footer">made with ❤️ by lamarcheeduardo <a href="http://github.com/lamarcheeduardo" target="_blank" rel="noopener noreferrer"><img src="./img/github.svg" alt="" srcset="" class="github"></a></i></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
