@@ -19,7 +19,7 @@ function Book(title, author, pages, status) {
 
 }
 
-//Add ID to Each Book
+//Add ID to Each Book 
 
 //Adding book to shelf.
 function addBookToBookshelf() {
@@ -29,7 +29,7 @@ function addBookToBookshelf() {
     createBookCards(newBook)
 }
 
-//Delete Form Values
+//Delete Form Values AFTER SUBMIT
 
 function deleteForm() {
     title.value = '';
@@ -37,14 +37,11 @@ function deleteForm() {
     pages.value = '';
 }
 
-// submit.addEventListener('click', (event) => {
-//     event.preventDefault();
-    
-// })
+// Handle Click on Subtmit
 
 const handleClick = () => {
     if(title.value === '')  {
-        error.innerHTML = 'Hey! We need the tittle.'
+        error.innerHTML = 'Hey! We need the title.'
         error.classList.add('alert', 'alert-warning', 'alert-dismissible', 'fade', 'show')
         const button = document.createElement('button')
         button.classList.add('btn-close')
@@ -62,11 +59,11 @@ const handleClick = () => {
 
 
 
+
 // After Getting the New Book
 
 const createBookCards = (book) => {
     console.log(book)
-
    // Creating all new elements needed in the card
     const gridItem = document.createElement('div')
     const card = document.createElement('div')
@@ -93,6 +90,23 @@ const createBookCards = (book) => {
     btnStatus.classList.add('btn', 'btn-outline-success', 'button-normal')
     btnDelete.classList.add('btn', 'btn-outline-danger', 'button-normal')
 
+    btnDelete.addEventListener('click', (event) => {
+      const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
+        for(let i = 0; i < myBookshelf.length; i++) {
+            if(bookTitleToFind === book.title){
+               deleteBookCard(bookTitleToFind);
+            } else {
+                console.log('no matches')
+            }
+
+        }
+    })
+
+
+    //addomg ID for the event listeners
+
+    btnDelete.setAttribute('id', 'deleteButton')
+
    // Adding content
   
     emoji.textContent = '📕'
@@ -116,7 +130,35 @@ const createBookCards = (book) => {
     cardBody.appendChild(btnStatus)
     cardBody.appendChild(btnDelete)
 
+        // Deleting Book Cards 
+
+        function deleteBookCard(){
+            gridItem.removeChild(card)
+            card.removeChild(cardBody)
+            cardBody.removeChild(cardTitle)
+            cardTitle.removeChild(emoji)
+            cardTitle.removeChild(bookTitle)
+            cardBody.removeChild(bookAuthor)
+            cardBody.removeChild(bookPages)
+            cardBody.removeChild(bookStatus)
+            cardBody.removeChild(btnStatus)
+            cardBody.removeChild(btnDelete)
+    }
     
 };
 
+
+//Deleting books
+
+
+
+// const deleteBtn = document.getElementById('deleteButton')
+
+
+// function deleteBook(){ 
+//     deleteBtn.addEventListener('click', (event) => {
+//         console.log('im being pressed')
+//         console.log(event)
+//     })
+// }
 
