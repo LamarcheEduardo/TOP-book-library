@@ -24,7 +24,14 @@ function Book(title, author, pages, status) {
 //Adding book to shelf.
 function addBookToBookshelf() {
     const newBook = new Book(title.value, author.value, pages.value, status.value);
-   
+
+    Object.defineProperty(newBook, "id" , {
+        value: myBookshelf.length
+    })
+    console.log(newBook)
+
+    
+
     myBookshelf.push(newBook)
     createBookCards(newBook)
 }
@@ -50,6 +57,7 @@ const handleClick = () => {
     } else if (author.value === '') {
         alert('Hey! We need the author.')
     } else {
+
         addBookToBookshelf();
         deleteForm();
 
@@ -58,12 +66,10 @@ const handleClick = () => {
 
 
 
-
-
 // After Getting the New Book
 
 const createBookCards = (book) => {
-    console.log(book)
+
    // Creating all new elements needed in the card
     const gridItem = document.createElement('div')
     const card = document.createElement('div')
@@ -91,18 +97,31 @@ const createBookCards = (book) => {
     btnDelete.classList.add('btn', 'btn-outline-danger', 'button-normal')
 
     btnDelete.addEventListener('click', (event) => {
+
       const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
+
         for(let i = 0; i < myBookshelf.length; i++) {
+
             if(bookTitleToFind === book.title){
-               deleteBookCard(bookTitleToFind);
+               deleteBookCard();
+                
+            const index = myBookshelf.map((event) => {
+
+            return event.title;
+
+        }).indexOf(event.title)
+
+
             } else {
-                console.log('no matches')
+                return console.log('no matches')
             }
 
         }
     })
 
 
+    //Deleting BOOK Object
+        
     //addomg ID for the event listeners
 
     btnDelete.setAttribute('id', 'deleteButton')
@@ -133,6 +152,7 @@ const createBookCards = (book) => {
         // Deleting Book Cards 
 
         function deleteBookCard(){
+            grid.removeChild(gridItem)
             gridItem.removeChild(card)
             card.removeChild(cardBody)
             cardBody.removeChild(cardTitle)
@@ -143,6 +163,7 @@ const createBookCards = (book) => {
             cardBody.removeChild(bookStatus)
             cardBody.removeChild(btnStatus)
             cardBody.removeChild(btnDelete)
+
     }
     
 };
