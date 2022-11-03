@@ -24,6 +24,7 @@ function Book(title, author, pages, status) {
 //Adding book to shelf.
 function addBookToBookshelf() {
     const newBook = new Book(title.value, author.value, pages.value, status.value);
+    console.log(newBook.status.toString())
     myBookshelf.push(newBook)
     createBookCards(newBook)
 }
@@ -86,36 +87,6 @@ const createBookCards = (book) => {
     bookStatus.classList.add('card-status')
     btnStatus.classList.add('btn', 'btn-outline-success', 'button-normal')
     btnDelete.classList.add('btn', 'btn-outline-danger', 'button-normal')
-    
-    btnDelete.addEventListener('touchStart', (event) => {
-        event.preventDefault();
-      const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
-
-        for(let i = 0; i < myBookshelf.length; i++) {     
-            if(bookTitleToFind == myBookshelf[i].title) {
-               deleteBookCard();
-               myBookshelf.splice(i, 1)
-          } 
-        } 
-    })
-
-    btnDelete.addEventListener('click', (event) => {
-        event.preventDefault();
-      const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
-
-        for(let i = 0; i < myBookshelf.length; i++) {     
-            if(bookTitleToFind == myBookshelf[i].title) {
-               deleteBookCard();
-               myBookshelf.splice(i, 1)
-          } 
-        }
-    })
-
-
-
-    //addomg ID for the event listeners
-
-    btnDelete.setAttribute('id', 'deleteButton')
 
    // Adding content
   
@@ -124,7 +95,7 @@ const createBookCards = (book) => {
     bookAuthor.textContent = `${book.author}`
     bookPages.textContent = `${book.pages} pages`
     bookStatus.textContent = `${book.status}`
-    btnStatus.textContent = 'Edit'
+    btnStatus.textContent = 'Update'
     btnDelete.textContent = 'Delete'
 
    // Append it to the Root
@@ -142,7 +113,22 @@ const createBookCards = (book) => {
 
         // Deleting Book Cards 
 
+        btnDelete.addEventListener('click', (event) => {
+        
+            event.preventDefault();
+          
+                const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
+    
+                for(let i = 0; i < myBookshelf.length; i++) {     
+                    if(bookTitleToFind == myBookshelf[i].title) {
+                        deleteBookCard();
+                        myBookshelf.splice(i, 1)
+                    } 
+                }
+        })
+
         function deleteBookCard(){
+
             grid.removeChild(gridItem)
             gridItem.removeChild(card)
             card.removeChild(cardBody)
@@ -157,6 +143,25 @@ const createBookCards = (book) => {
 
     }
     
+    // Editing Button
+
+    btnStatus.addEventListener('click', (event) => {
+        event.preventDefault();
+        const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
+        for(let i = 0; i < myBookshelf.length; i++) {     
+            if(bookTitleToFind == myBookshelf[i].title) {
+                if(book.status.toLowerCase() === 'read') {
+                    bookStatus.textContent = 'Not Read'
+                    myBookshelf[i].status = 'Not Read'
+                } else if(book.status.toLowerCase() === 'not read'){
+                    bookStatus.textContent = 'Read'
+                    myBookshelf[i].status = 'Read'
+                } else {
+                    return book.status
+                }
+            } 
+        }
+    })
 };
 
 
