@@ -24,14 +24,6 @@ function Book(title, author, pages, status) {
 //Adding book to shelf.
 function addBookToBookshelf() {
     const newBook = new Book(title.value, author.value, pages.value, status.value);
-
-    Object.defineProperty(newBook, "id" , {
-        value: myBookshelf.length
-    })
-    console.log(newBook)
-
-    
-
     myBookshelf.push(newBook)
     createBookCards(newBook)
 }
@@ -64,7 +56,12 @@ const handleClick = () => {
     } 
 }
 
+//Delete Books
 
+// function deleteFromMyBookshelf(myBookshelf, value) {
+
+    
+// }
 
 // After Getting the New Book
 
@@ -97,31 +94,19 @@ const createBookCards = (book) => {
     btnDelete.classList.add('btn', 'btn-outline-danger', 'button-normal')
 
     btnDelete.addEventListener('click', (event) => {
-
+        event.preventDefault();
       const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
 
-        for(let i = 0; i < myBookshelf.length; i++) {
-
-            if(bookTitleToFind === book.title){
+        for(let i = 0; i < myBookshelf.length; i++) {     
+            if(bookTitleToFind == myBookshelf[i].title) {
                deleteBookCard();
-                
-            const index = myBookshelf.map((event) => {
-
-            return event.title;
-
-        }).indexOf(event.title)
-
-
-            } else {
-                return console.log('no matches')
-            }
-
+               myBookshelf.splice(i, 1)
+          } 
         }
     })
 
 
-    //Deleting BOOK Object
-        
+
     //addomg ID for the event listeners
 
     btnDelete.setAttribute('id', 'deleteButton')
@@ -182,4 +167,5 @@ const createBookCards = (book) => {
 //         console.log(event)
 //     })
 // }
+
 
