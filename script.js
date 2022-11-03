@@ -56,12 +56,6 @@ const handleClick = () => {
     } 
 }
 
-//Delete Books
-
-// function deleteFromMyBookshelf(myBookshelf, value) {
-
-    
-// }
 
 // After Getting the New Book
 
@@ -92,6 +86,18 @@ const createBookCards = (book) => {
     bookStatus.classList.add('card-status')
     btnStatus.classList.add('btn', 'btn-outline-success', 'button-normal')
     btnDelete.classList.add('btn', 'btn-outline-danger', 'button-normal')
+    
+    btnDelete.addEventListener('touchStart', (event) => {
+        event.preventDefault();
+      const bookTitleToFind = event.path[1].childNodes[0].lastChild.innerHTML
+
+        for(let i = 0; i < myBookshelf.length; i++) {     
+            if(bookTitleToFind == myBookshelf[i].title) {
+               deleteBookCard();
+               myBookshelf.splice(i, 1)
+          } 
+        } 
+    })
 
     btnDelete.addEventListener('click', (event) => {
         event.preventDefault();
