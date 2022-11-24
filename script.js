@@ -9,6 +9,11 @@ const error = document.getElementById('error')
 
 let myBookshelf = [];
 
+//LocalStorage
+
+// Local Storage
+
+
 //Book constructor
 
 function Book(title, author, pages, status) {
@@ -19,14 +24,13 @@ function Book(title, author, pages, status) {
 
 }
 
-//Add ID to Each Book 
-
 //Adding book to shelf.
+
 function addBookToBookshelf() {
     const newBook = new Book(title.value, author.value, pages.value, status.value);
-    console.log(newBook.status.toString())
     myBookshelf.push(newBook)
-    createBookCards(newBook)
+ 
+    
 }
 
 //Delete Form Values AFTER SUBMIT
@@ -63,6 +67,7 @@ const handleClick = () => {
 const createBookCards = (book) => {
 
    // Creating all new elements needed in the card
+
     const gridItem = document.createElement('div')
     const card = document.createElement('div')
     const cardBody = document.createElement('div')
@@ -76,6 +81,7 @@ const createBookCards = (book) => {
     const btnDelete = document.createElement('button')
 
    // Adding classes
+
     gridItem.classList.add('grid-item')
     card.classList.add('card')
     cardBody.classList.add('card-body')
@@ -99,6 +105,7 @@ const createBookCards = (book) => {
     btnDelete.textContent = 'Delete'
 
    // Append it to the Root
+
     grid.appendChild(gridItem)
     gridItem.appendChild(card)
     card.appendChild(cardBody)
@@ -156,27 +163,10 @@ const createBookCards = (book) => {
                 } else if(book.status.toLowerCase() === 'not read'){
                     bookStatus.textContent = 'Read'
                     myBookshelf[i].status = 'Read'
-                } else {
-                    return book.status
                 }
             } 
         }
     })
 };
-
-
-//Deleting books
-
-
-
-// const deleteBtn = document.getElementById('deleteButton')
-
-
-// function deleteBook(){ 
-//     deleteBtn.addEventListener('click', (event) => {
-//         console.log('im being pressed')
-//         console.log(event)
-//     })
-// }
 
 
