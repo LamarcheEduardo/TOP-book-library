@@ -9,10 +9,17 @@ const error = document.getElementById('error')
 
 let myBookshelf = [];
 
-//LocalStorage
 
-// Local Storage
+class Book {
+    constructor(title, author, pages, status)
 
+    addBookToBookshelf(){
+        this.title = title.value
+        this.author = author.value
+        this.pages = pages.value
+        this.status = status.value
+    }
+}
 
 //Book constructor
 
